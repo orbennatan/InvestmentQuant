@@ -56,14 +56,14 @@ class AggregatorPercentageParticipants(AggregatorBase):
         # Line 0 now contains the values associated with each owner now, before the update from the account
         # Create a dict of percentage of the account associated with each owner
         # First, claculate the total
-        total = 0
+        total_all_oweners = 0
         for owner in self.owners:
-            total += int(self.df.iloc[0][owner])
+            total_all_oweners += int(self.df.iloc[0][owner])
         # Now the relative value
         for owner in self.owners:
-            self.owners_percentages[owner] = int(self.df.iloc[0][owner]) / total
+            self.owners_percentages[owner] = int(self.df.iloc[0][owner]) / total_all_oweners
         # Add this row with today's date and the comment
-        new_row = {TC.Date: self.today_datetime_string(), GC.Comments: 'Upload from account', GC.Total: total}
+        new_row = {TC.Date: self.today_datetime_string(), GC.Comments: 'Upload from account', GC.Total: self.account_total}
         for owner in self.owners:
             new_row[owner] = int(self.account_total * self.owners_percentages[owner])
         new_row[GC.Comments] = 'Upload from account'

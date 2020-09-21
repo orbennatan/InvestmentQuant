@@ -15,7 +15,7 @@ Conf = {
             AP.AggregatorFileName: "AggregatedInvestments.csv",
             AP.InitialState: {TC.Date: '2020-09-04 01:01:01', GC.Total: 1394539, 'Or': 1339808, 'AdamRoni': 20207,
                               'DanielYoni': 26813, 'Michal': 7711, GC.Comments: ['Start']},
-            AB.Accounts: ['U1357738', 'U1378906', 'U3279997']
+            AB.Accounts: ['U1357738', 'U1378906', 'U3279997', 'U4502628']
 
         },
         CC.AggregatorBase: {AP.BrokerProvider: CC.BrokerIBKR},
