@@ -6,10 +6,7 @@ import datetime as dt
 import numpy as np
 
 
-
 class BaseClass:
-
-
 
     @staticmethod
     def instantiate_class(conf, class_name):
@@ -26,18 +23,18 @@ class BaseClass:
     @staticmethod
     def config_class(self, conf) -> dict:
         self.root_folder = conf[PC.RootFolder]
-        #class_name = type(self).__name__
+        # class_name = type(self).__name__
         current_class_object = type(self)
         # Create class_conf dict based on all keys found in parent class with child class overriding parents
         parents = current_class_object.mro()
         class_conf = {}
-        for class_object in reversed(parents): # From higher to lower in the hierarchy
+        for class_object in reversed(parents):  # From higher to lower in the hierarchy
             class_name = class_object.__name__
             if class_name not in conf[CC.Classes].keys():
                 continue
             temp_conf = conf[CC.Classes][class_name]
             for key, value in temp_conf.items():
-                class_conf[key] = value # Lower in the hierarchy overrides keys that were defined in parent classes
+                class_conf[key] = value  # Lower in the hierarchy overrides keys that were defined in parent classes
         self.class_conf = class_conf
         return class_conf
 
@@ -70,6 +67,13 @@ class BaseClass:
         return dt.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
 
     @staticmethod
+    def second_ago_string():
+        time_now = dt.datetime.now()
+        second_ago = dt.datetime.now() - dt.timedelta(seconds=1)
+        #print(f'now = {time_now}, second_ago = {second_ago}')
+        return second_ago.strftime("%Y-%m-%d, %H:%M:%S")
+
+    @staticmethod
     def get_range_for_last_business_day() -> (str, str):
         date_today = dt.date.today()
         date_last_week = date_today - dt.timedelta(days=4)
@@ -85,7 +89,6 @@ class BaseClass:
         for inputs, labels in ds.take(3):
             print(inputs.numpy(), "=>", labels.numpy())
 
-
     def normalize_0_to_1(self, array):
-        x = ((array - np.min(array)) / (np.linalg.norm(array - np.min(array))))*1000
+        x = ((array - np.min(array)) / (np.linalg.norm(array - np.min(array)))) * 1000
         return x.astype(int)

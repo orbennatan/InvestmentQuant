@@ -15,8 +15,3 @@ conf_path = os.path.join(executable_folder_path, conf_full_file_name)
 conf[PC.ConfFilePath] = conf_path
 
 agg = BaseClass.instantiate_class(conf, conf[GC.Aggregator])
-
-
-
-
-
