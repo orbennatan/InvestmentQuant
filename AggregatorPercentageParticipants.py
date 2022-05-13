@@ -4,7 +4,6 @@ from MyConstants import PathConstants as PC, TimeConstants as TC, GeneralConstan
 from os.path import join, exists
 import pandas as pd
 from pandas import DataFrame
-from pandas import DataFrame
 import sys
 
 
@@ -22,7 +21,6 @@ class AggregatorPercentageParticipants(AggregatorBase):
         self.new_row = None
         self.account_total = 0
         self.owners = []
-        self.owners_percentages = {}
         self.filepath = join(self.global_conf[PC.RootFolder], self.class_conf[self.AggregatorFileName])
         self.init_values_df_from_file_or_conf()
         self.update_total_from_accounts()

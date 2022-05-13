@@ -1,9 +1,8 @@
-import sys
 import os
-from MyConstants import PathConstants as PC, ClassConstants as CC, GeneralConstants as GC
+import sys
 from importlib import import_module
 from BaseClass import BaseClass
-from AggregatorBase import AggregatorBase
+from MyConstants import PathConstants, GeneralConstants
 
 configs = sys.argv
 executable_path = sys.argv[0]
@@ -12,6 +11,6 @@ conf = import_module(conf_module).Conf
 executable_folder_path = os.path.dirname(executable_path)
 conf_full_file_name = f'{conf_module}.py'
 conf_path = os.path.join(executable_folder_path, conf_full_file_name)
-conf[PC.ConfFilePath] = conf_path
+conf[PathConstants.ConfFilePath] = conf_path
 
-agg = BaseClass.instantiate_class(conf, conf[GC.Aggregator])
+agg = BaseClass.instantiate_class(conf, conf[GeneralConstants.Strategy])

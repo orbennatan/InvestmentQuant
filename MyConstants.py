@@ -1,7 +1,7 @@
 # This file contain constants for several categories. Each category is defined as a class
 class ClassConstants:
-    AggregatorBase = 'AggregatorBase'
-    AggregatorPercentageParticipants= 'AggregatorPercentageParticipants'
+    StrategyBase = 'StrategyBase'
+    StrategyQuant = 'StrategyQuant'
     HelloWorld = 'HelloWorld'
     BrokerBase = 'BrokerBase'
     BrokerIBKR = 'BrokerIBKR'
@@ -12,7 +12,6 @@ class ClassConstants:
     File_ = 'file_'
     Conf_ = 'conf_'
     Name = 'Name'
-
 
 
 class AttributeConstants:
@@ -31,7 +30,7 @@ class PathConstants:
 class GeneralConstants:
     Classes = 'classes'
     Hyperparameter = 'hyperparameter'
-    Aggregator = 'Aggregator'
+    Strategy = 'Strategy'
     Comments = 'Comments'
     Total = 'Total'
 
@@ -39,7 +38,6 @@ class GeneralConstants:
 class ErrorConstants:
     OK = 'OK'
     AttributeNotSupported = 'attribute_not_supported'
-
 
 
 class TimeConstants:
