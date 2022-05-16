@@ -1,11 +1,12 @@
 # Configuration data only. We use .py instead of json so as to allow using of constants instead of strings
 from BrokerIBKR import BrokerIBKR
-from MyConstants import PathConstants, GeneralConstants, TimeConstants
+from MyConstants import PathConstants, GeneralConstants
 from MyConstants import ClassConstants
 # from StrategyQuant import StrategyQuant
 from StrategyBase import StrategyBase
 
-# Paper Account - Account Number: DU4363640, username: yigael547, Password: Ariel2013
+# Paper Account - Account Number: DU4363640, username: yigael547
+# Rea Account - Account Number: U6947311, username: yigaelbennatan
 
 Conf = {
     PathConstants.RootFolder: "C:\\git\\InvestmentQuant",
@@ -13,11 +14,11 @@ Conf = {
     GeneralConstants.Classes: {
         ClassConstants.StrategyQuant: {
             # PathConstants.AggregatorFileName: "AggregatedInvestments.csv", - from other project
-            StrategyBase.Accounts: ['DU4363640'],
-            # for Or enter 0. for AdamRoni enter 1. for DanielYoni enter 2. for Michal enter 3.
-            # for Avital enter 4. for Yigael enter 5. for tali enter 6. 9 for update from account only
-            StrategyBase.OwnerOrdinal: 0,  # This is where you put the owner
-            StrategyBase.NumberOfStocks: 20,  # This is where you put the owner
+            StrategyBase.Accounts: ['DU4363640', 'U6947311'],
+            StrategyBase.OwnerOrdinal: 1,  # This is where you put the owner
+            StrategyBase.NumberOfStocks: 20,
+            StrategyBase.CurrencyUnit: 20000,
+            StrategyBase.AccountValues: {}
         },
         ClassConstants.StrategyBase: {StrategyBase.BrokerProvider: ClassConstants.BrokerIBKR},
         ClassConstants.BrokerIBKR: {
