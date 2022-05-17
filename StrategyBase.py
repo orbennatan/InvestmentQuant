@@ -1,6 +1,9 @@
 from BaseClass import BaseClass
 from BrokerBase import BrokerBase
+from IBKR import AccountValues
 from Logger import log
+from BrokerState import BrokerState
+from BrokerInstrument import BrokerInstrument
 
 """
 A strategy class.
@@ -14,7 +17,7 @@ class StrategyBase(BaseClass):
     OwnerOrdinal = 'OwnerOrdinal'
     NumberOfStocks = 'NumberOfStocks'  # Number of stocks this strategy handles
     CurrencyUnit = 'CurrencyUnit'  # $ Amount per trade
-    AccountValues = 'AccountValues'
+    BrokerAccountValues = 'BrokerAccountValues'
 
     def __init__(self, conf):
         super().__init__()  # We need this call in order to call the ABC __init__ method
@@ -27,8 +30,14 @@ class StrategyBase(BaseClass):
         class_conf = self.class_conf
         broker = self.broker
         account = class_conf[self.Accounts][class_conf[self.OwnerOrdinal]]
-        class_conf[self.AccountValues] = broker.get_account_values(account)
-        log.info(message={class_conf[self.AccountValues]})
+        class_conf[self.BrokerAccountValues], error = broker.get_account_values(account)
+        if error != AccountValues.OK:
+            log.error(message=error)
+            raise Exception(error)
+        log.info(message={class_conf[self.BrokerAccountValues]})
+        self.brokerState = BrokerState()
+        self.brokerState.AvailableFunds = float(class_conf[self.BrokerAccountValues])
+        log.info(message=f'AvailableFunds {self.brokerState.AvailableFunds}')
 
     def initialise_strategy(self, account):
 

@@ -15,10 +15,13 @@ Conf = {
         ClassConstants.StrategyQuant: {
             # PathConstants.AggregatorFileName: "AggregatedInvestments.csv", - from other project
             StrategyBase.Accounts: ['DU4363640', 'U6947311'],
-            StrategyBase.OwnerOrdinal: 1,  # This is where you put the owner
+            # This is where you put the owner.
+            # - 0 - Yigael Paper Account
+            # - 1 - Yigael Live Account
+            StrategyBase.OwnerOrdinal: 0,
             StrategyBase.NumberOfStocks: 20,
             StrategyBase.CurrencyUnit: 20000,
-            StrategyBase.AccountValues: {}
+            StrategyBase.BrokerAccountValues: {}
         },
         ClassConstants.StrategyBase: {StrategyBase.BrokerProvider: ClassConstants.BrokerIBKR},
         ClassConstants.BrokerIBKR: {

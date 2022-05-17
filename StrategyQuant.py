@@ -8,7 +8,7 @@ A strategy class.
 class StrategyQuant(StrategyBase):
 
     """ Init Logic
-    Load the latest configurations from .py file
+    Load the latest configurations from .py file - StrategyBase
     Get current state from TWS
     Get the latest state from Database
     If Same date - compare states and report error on differences
