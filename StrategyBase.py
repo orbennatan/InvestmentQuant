@@ -38,6 +38,9 @@ class StrategyBase(BaseClass):
         self.brokerState = BrokerState()
         self.brokerState.AvailableFunds = float(class_conf[self.BrokerAccountValues])
         log.info(message=f'AvailableFunds {self.brokerState.AvailableFunds}')
+        self.brokerState.instrumentDict = broker.get_positions(conf)
+        log.info(message=f'Positions {self.brokerState.instrumentDict}')
+
 
     def initialise_strategy(self, account):
 
