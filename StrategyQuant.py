@@ -18,6 +18,7 @@ class StrategyQuant(StrategyBase):
     """
     def __init__(self, conf):
         super().__init__(conf)  # We need this call in order to call the ABC __init__ method
+        self.get_account_values_from_broker(conf)
 
     def initialise_strategy(self, account):
 
