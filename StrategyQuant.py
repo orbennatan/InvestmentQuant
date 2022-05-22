@@ -1,3 +1,7 @@
+import logging
+
+from Logger import log
+from MyConstants import DatabaseConstants
 from StrategyBase import StrategyBase
 
 """
@@ -19,6 +23,9 @@ class StrategyQuant(StrategyBase):
     def __init__(self, conf):
         super().__init__(conf)  # We need this call in order to call the ABC __init__ method
         self.get_account_values_from_broker(conf)
+        database_broker_state = self.database.get_last_row(DatabaseConstants.StateTable)
+        log.info(f'{database_broker_state}')
+        StrategyQuant.validate_database_broker_state(broker_state=database_broker_state)
 
     def initialise_strategy(self, account):
 
@@ -31,3 +38,6 @@ class StrategyQuant(StrategyBase):
     def teardown_strategy(self, account):
 
         pass
+
+    @staticmethod
+    def validate_database_broker_state(broker_state):

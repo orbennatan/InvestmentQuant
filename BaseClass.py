@@ -2,6 +2,8 @@ import datetime
 import json
 from importlib import import_module
 import numpy
+
+from Logger import log
 from MyConstants import ClassConstants
 from MyConstants import TimeConstants, PathConstants
 
@@ -17,7 +19,8 @@ class BaseClass:
             class_object = getattr(module, class_name)
             class_instance = class_object(conf)
         except Exception as ex:
-            return None
+            log.error(f'{ex}')
+            raise ex
         return class_instance
 
     @staticmethod

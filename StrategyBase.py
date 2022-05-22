@@ -1,9 +1,9 @@
 from BaseClass import BaseClass
 from BrokerBase import BrokerBase
+from DatabaseBase import DatabaseBase
 from IBKR import AccountValues
 from Logger import log
 from BrokerState import BrokerState
-from BrokerInstrument import BrokerInstrument
 
 """
 A strategy class.
@@ -12,6 +12,7 @@ A strategy class.
 
 class StrategyBase(BaseClass):
     BrokerProvider = 'BrokerProvider'
+    DatabaseProvider = 'DatabaseProvider'
     Accounts = 'Accounts'
     Owners = 'Owners'
     OwnerOrdinal = 'OwnerOrdinal'
@@ -25,6 +26,8 @@ class StrategyBase(BaseClass):
         self.global_conf = conf
         self.class_conf = super().config_class(self, conf)
         self.broker: BrokerBase = super().instantiate_class(conf, self.class_conf[self.BrokerProvider])
+        if self.class_conf[self.DatabaseProvider]:
+            self.database: DatabaseBase = super().instantiate_class(conf, self.class_conf[self.DatabaseProvider])
         self.account_total = None
 
     def initialise_strategy(self, account):

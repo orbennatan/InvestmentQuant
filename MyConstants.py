@@ -5,6 +5,8 @@ class ClassConstants:
     HelloWorld = 'HelloWorld'
     BrokerBase = 'BrokerBase'
     BrokerIBKR = 'BrokerIBKR'
+    DatabaseBase = 'DatabaseBase'
+    DatabaseAccess = 'DatabaseAccess'
     BaseClass = 'BaseClass'
     Classes = 'classes'
     ConfSecond = 'conf_second'
@@ -33,6 +35,8 @@ class GeneralConstants:
     Strategy = 'Strategy'
     Comments = 'Comments'
     Total = 'Total'
+    RunMode = 'RunMode'
+    RunModeDebug = 'RunModeDebug'
 
 
 class ErrorConstants:
@@ -45,3 +49,12 @@ class TimeConstants:
     EndDate = 'end_date'
     Date = 'date'
     DateFormatHyphens = '%Y-%m-%d'
+
+
+class DatabaseConstants:
+    StateTable = 'State'
+    StateRowIdInd = 0
+    StateRowCacheInd = 1
+    StateRowNumStocksInd = 2
+    StateRowDateInd = 3
+    StateRowStateJsonInd = 4
