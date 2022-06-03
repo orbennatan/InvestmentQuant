@@ -4,6 +4,7 @@ from DatabaseBase import DatabaseBase
 from IBKR import AccountValues
 from Logger import log
 from BrokerState import BrokerState
+from tools import create_auxiliary_parameters
 
 """
 A strategy class.
@@ -29,6 +30,7 @@ class StrategyBase(BaseClass):
         if self.class_conf[self.DatabaseProvider]:
             self.database: DatabaseBase = super().instantiate_class(conf, self.class_conf[self.DatabaseProvider])
         self.account_total = None
+        create_auxiliary_parameters(conf)
 
     def initialise_strategy(self, account):
 
@@ -55,3 +57,5 @@ class StrategyBase(BaseClass):
         log.info(message=f'AvailableFunds {self.brokerState.AvailableFunds}')
         self.brokerState.instrumentDict = broker.get_positions(conf)
         log.info(message=f'Positions {self.brokerState.instrumentDict}')
+        pnl = broker.get_pnl(conf)
+        log.info(message=f'pnl {pnl}')
