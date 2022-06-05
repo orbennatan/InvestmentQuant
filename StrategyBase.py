@@ -4,7 +4,7 @@ from DatabaseBase import DatabaseBase
 from IBKR import AccountValues
 from Logger import log
 from BrokerState import BrokerState
-from tools import create_auxiliary_parameters
+from tools import create_auxilery_parameters_without_connction
 
 """
 A strategy class.
@@ -30,7 +30,7 @@ class StrategyBase(BaseClass):
         if self.class_conf[self.DatabaseProvider]:
             self.database: DatabaseBase = super().instantiate_class(conf, self.class_conf[self.DatabaseProvider])
         self.account_total = None
-        create_auxiliary_parameters(conf)
+        create_auxilery_parameters_without_connction(conf)
 
     def initialise_strategy(self, account):
 

@@ -2,3 +2,4 @@
 *.log
 *.pyc
 *.log
+.idea/codeStyles/codeStyleConfig.xml
